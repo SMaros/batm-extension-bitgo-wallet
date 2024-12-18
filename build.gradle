@@ -1,7 +1,0 @@
-plugins {
-    id("shared-build-conventions")
-}
-
-allprojects {
-    apply plugin: 'shared-build-conventions'
-}

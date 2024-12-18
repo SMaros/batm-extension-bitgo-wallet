@@ -1,7 +1,0 @@
-plugins {
-    id("shared-publish-conventions")
-}
-
-group = projectGroup
-version = projectVersion
-
