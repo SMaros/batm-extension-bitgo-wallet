@@ -15,7 +15,7 @@
  * Web      :  http://www.generalbytes.com
  *
  ************************************************************************************/
-package com.localcoin.batm.extensions.extra;
+package com.localcoin.batm.extensions.bitgo;
 
 import com.generalbytes.batm.server.extensions.IExchange;
 import com.generalbytes.batm.server.extensions.IExchangeAdvanced;

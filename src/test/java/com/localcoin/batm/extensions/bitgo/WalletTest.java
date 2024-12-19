@@ -1,4 +1,4 @@
-package com.localcoin.batm.extensions.extra;
+package com.localcoin.batm.extensions.bitgo;
 
 import com.generalbytes.batm.common.currencies.CryptoCurrency;
 import com.generalbytes.batm.server.extensions.IGeneratesNewDepositCryptoAddress;

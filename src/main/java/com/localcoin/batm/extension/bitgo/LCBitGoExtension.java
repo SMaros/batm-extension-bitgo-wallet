@@ -1,9 +1,18 @@
 package com.localcoin.batm.extension.bitgo;
 
+import com.generalbytes.batm.server.extensions.AbstractExtension;
+import com.generalbytes.batm.server.extensions.ExtensionsUtil;
+import com.generalbytes.batm.server.extensions.IExtensionContext;
+import com.generalbytes.batm.server.extensions.IWallet;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.net.InetSocketAddress;
 import java.util.StringTokenizer;
 
 public class LCBitGoExtension extends AbstractExtension {
+
+    private static final Logger log = LoggerFactory.getLogger(LCBitGoExtension.class);
     private IExtensionContext ctx;
 
     private static final String BITGO_WALLET = "lcbitgo";
@@ -13,6 +22,15 @@ public class LCBitGoExtension extends AbstractExtension {
     @Override
     public void init(IExtensionContext ctx) {
         this.ctx = ctx;
+    }
+
+    /**
+     * Returns the context object
+     *
+     * @return @IExtensionContext
+     */
+    public IExtensionContext getCtx() {
+        return ctx;
     }
 
     @Override
@@ -91,7 +109,7 @@ public class LCBitGoExtension extends AbstractExtension {
                 }
             }
         } catch (Exception e) {
-            ExtensionsUtil.logExtensionParamsException("createWallet", getClass().getSimpleName(), walletLogin, e);
+            log.error("Unable to create wallet", e);
         }
         return null;
     }

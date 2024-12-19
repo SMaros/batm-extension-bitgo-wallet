@@ -1,4 +1,4 @@
-package com.localcoin.batm.extensions.extra.bitcoin.wallets.bitgo.v2;
+package com.localcoin.batm.extensions.bitgo;
 
 import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.LoggerContext;
@@ -21,6 +21,7 @@ import java.util.List;
 
 public class BitgoWalletTest {
 
+    public static final String BATM_CONFIG_PATH = "BATM_CONFIG_PATH";
     private static final Logger log = LoggerFactory.getLogger(BitgoWalletTest.class);
 
     private static BitgoWallet wallet;

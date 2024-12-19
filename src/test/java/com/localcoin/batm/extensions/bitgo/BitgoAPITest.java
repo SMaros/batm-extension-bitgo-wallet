@@ -1,4 +1,4 @@
-package com.localcoin.batm.extensions.extra.bitcoin.wallets.bitgo.v2;
+package com.localcoin.batm.extensions.bitgo;
 
 import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.LoggerContext;
