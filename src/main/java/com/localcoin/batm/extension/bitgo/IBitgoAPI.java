@@ -1,28 +1,11 @@
-/*************************************************************************************
- * Copyright (C) 2014-2020 GENERAL BYTES s.r.o. All rights reserved.
- *
- * This software may be distributed and modified under the terms of the GNU
- * General Public License version 2 (GPL2) as published by the Free Software
- * Foundation and appearing in the file GPL2.TXT included in the packaging of
- * this file. Please note that GPL2 Section 2[b] requires that all works based
- * on this software must also be made publicly available under the terms of
- * the GPL2 ("Copyleft").
- *
- * Contact information
- * -------------------
- *
- * GENERAL BYTES s.r.o.
- * Web      :  http://www.generalbytes.com
- *
- ************************************************************************************/
 package com.localcoin.batm.extension.bitgo;
 
-import com.generalbytes.batm.server.extensions.extra.bitcoin.wallets.bitgo.v2.dto.BitGoAddressResponse;
-import com.generalbytes.batm.server.extensions.extra.bitcoin.wallets.bitgo.v2.dto.BitGoCoinRequest;
-import com.generalbytes.batm.server.extensions.extra.bitcoin.wallets.bitgo.v2.dto.BitGoCreateAddressRequest;
-import com.generalbytes.batm.server.extensions.extra.bitcoin.wallets.bitgo.v2.dto.BitGoSendManyRequest;
-import com.generalbytes.batm.server.extensions.extra.bitcoin.wallets.bitgo.v2.dto.BitGoTransfersResponse;
-import com.generalbytes.batm.server.extensions.extra.bitcoin.wallets.bitgo.v2.dto.ErrorResponseException;
+import com.localcoin.batm.extension.bitgo.dto.BitGoAddressResponse;
+import com.localcoin.batm.extension.bitgo.dto.BitGoCoinRequest;
+import com.localcoin.batm.extension.bitgo.dto.BitGoCreateAddressRequest;
+import com.localcoin.batm.extension.bitgo.dto.BitGoSendManyRequest;
+import com.localcoin.batm.extension.bitgo.dto.BitGoTransfersResponse;
+import com.localcoin.batm.extension.bitgo.dto.ErrorResponseException;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
