@@ -100,10 +100,10 @@ public class BitgoWallet implements IWallet, ICanSendMany {
 
     private String getResultTxId(Map<String, Object> result) {
         Objects.requireNonNull(result, "Returned map is null");
-        if (result.get("txid") instanceof String) {
-            return (String) result.get("txid");
+        if (result.get("id") instanceof String) {
+            return (String) result.get("id");
         }
-        log.warn("txid not returned: {}", result);
+        log.warn("id not returned: {}", result);
         return null;
     }
 
@@ -130,6 +130,10 @@ public class BitgoWallet implements IWallet, ICanSendMany {
     public String sendCoins(String destinationAddress, BigDecimal amount, String cryptoCurrency, String description) {
         try {
             final BitGoCoinRequest request = new BitGoCoinRequest(destinationAddress, toSatoshis(amount, cryptoCurrency), walletPassphrase, description, this.numBlocks);
+            String type = getType(cryptoCurrency);
+            if (type != null) {
+                request.setType(type);
+            }
             String bitgoCryptoCurrency = cryptoCurrencies.get(cryptoCurrency);
             return getResultTxId(api.sendCoins(bitgoCryptoCurrency, this.walletId, request));
         } catch (HttpStatusIOException hse) {
@@ -244,6 +248,19 @@ public class BitgoWallet implements IWallet, ICanSendMany {
                 .setScale(0, RoundingMode.FLOOR)
                 .movePointLeft(getDecimals(cryptoCurrency))
                 .stripTrailingZeros();
+    }
+
+    private String getType(String cryptoCurrency) {
+        switch (cryptoCurrency) {
+            case "ETH":
+            case "USDT":
+            case "USDTTRON":
+                return "transfer";
+            case "XRP":
+                return "payment";
+            default:
+                return null;
+        }
     }
 
     public String toString() {

@@ -9,6 +9,7 @@ public class BitGoCoinRequest {
     private String walletPassphrase;
     private Integer numBlocks;
     private String comment;
+    private String type;
 
 
     public BitGoCoinRequest(String address, String amount, String walletPassphrase, String comment, Integer numBlocks) {
@@ -57,5 +58,13 @@ public class BitGoCoinRequest {
 
     public void setComment(String comment){
         this.comment = comment;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }
