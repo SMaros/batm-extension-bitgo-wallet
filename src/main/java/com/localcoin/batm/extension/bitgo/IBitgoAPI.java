@@ -4,7 +4,6 @@ import com.localcoin.batm.extension.bitgo.dto.BitGoAddressResponse;
 import com.localcoin.batm.extension.bitgo.dto.BitGoCoinRequest;
 import com.localcoin.batm.extension.bitgo.dto.BitGoCreateAddressRequest;
 import com.localcoin.batm.extension.bitgo.dto.BitGoSendManyRequest;
-import com.localcoin.batm.extension.bitgo.dto.BitGoTransfersResponse;
 import com.localcoin.batm.extension.bitgo.dto.ErrorResponseException;
 
 import javax.ws.rs.Consumes;
@@ -43,14 +42,6 @@ public interface IBitgoAPI {
     @GET
     @Path("/{coin}/wallet/{id}")
     Map<String, Object> getWalletById(@PathParam("coin") String coin, @PathParam("id") String id) throws IOException, ErrorResponseException;
-
-    @GET
-    @Path("/{coin}/wallet/{walletId}/transfer")
-    BitGoTransfersResponse getTransfers(@PathParam("coin") String coin,
-                                        @PathParam("walletId") String walletId,
-                                        @QueryParam("state") String state,
-                                        @QueryParam("type") String type,
-                                        @QueryParam("address") String address) throws IOException, ErrorResponseException;
 
     @GET
     @Path("/{coin}/wallet/{walletId}/address/{addressOrId}")

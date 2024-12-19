@@ -9,8 +9,6 @@ public class BitGoCoinRequest {
     private String walletPassphrase;
     private Integer numBlocks;
     private String comment;
-    private Integer feeRate;
-    private Integer maxFeeRate;
 
 
     public BitGoCoinRequest(String address, String amount, String walletPassphrase, String comment, Integer numBlocks) {
@@ -19,13 +17,6 @@ public class BitGoCoinRequest {
         this.walletPassphrase = walletPassphrase;
         this.numBlocks = numBlocks;
         this.comment = comment;
-    }
-
-    public BitGoCoinRequest(String address, String amount, String walletPassphrase, String comment, Integer numBlocks, Integer feeRate, Integer maxFeeRate) {
-        this(address, amount, walletPassphrase, comment, numBlocks);
-
-        this.feeRate = feeRate;
-        this.maxFeeRate = maxFeeRate;
     }
 
     public String getAddress() {
@@ -53,34 +44,18 @@ public class BitGoCoinRequest {
     }
 
     public void setNumBlocks(Integer numBlocks){
-      this.numBlocks = numBlocks;
+        this.numBlocks = numBlocks;
     }
 
     public Integer getNumBlocks() {
-      return numBlocks;
+        return numBlocks;
     }
 
     public String getComment() {
-      return comment;
+        return comment;
     }
 
     public void setComment(String comment){
-      this.comment = comment;
-    }
-
-    public Integer getFeeRate() {
-        return feeRate;
-    }
-
-    public void setFeeRate(Integer feeRate) {
-        this.feeRate = feeRate;
-    }
-
-    public Integer getMaxFeeRate() {
-        return maxFeeRate;
-    }
-
-    public void setMaxFeeRate(Integer maxFeeRate) {
-        this.maxFeeRate = maxFeeRate;
+        this.comment = comment;
     }
 }
