@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extensions>
     <extension class="com.localcoin.batm.extension.bitgo.LCBitGoExtension" >
-            <wallet prefix="lcbitgo" name="BitGo Wallet">
+            <wallet prefix="lcbitgo" name="BitGo Wallet Localcoin">
                 <sendtomany supported="true"/>
                 <tunnel supported="true"/>
                 <param name="host" />
@@ -20,7 +20,7 @@
                 <cryptocurrency buyonly="true">USDT</cryptocurrency>
                 <help>Host should start with http:// or https://. num_blocks is an integer greater than 2.</help>
             </wallet>
-            <wallet prefix="lcbitgonoforward" name="BitGo Wallet (no forward)">
+            <wallet prefix="lcbitgonoforward" name="BitGo Wallet Localcoin (no forward)">
                 <sendtomany supported="true"/>
                 <tunnel supported="true"/>
                 <param name="host" />

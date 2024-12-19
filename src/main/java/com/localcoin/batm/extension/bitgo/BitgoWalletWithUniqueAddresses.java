@@ -12,9 +12,7 @@ import org.slf4j.LoggerFactory;
 import si.mazi.rescu.HttpStatusIOException;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class BitgoWalletWithUniqueAddresses extends BitgoWallet implements IGeneratesNewDepositCryptoAddress, IQueryableWallet {

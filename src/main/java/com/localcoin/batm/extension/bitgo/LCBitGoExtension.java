@@ -1,7 +1,6 @@
 package com.localcoin.batm.extension.bitgo;
 
 import com.generalbytes.batm.server.extensions.AbstractExtension;
-import com.generalbytes.batm.server.extensions.ExtensionsUtil;
 import com.generalbytes.batm.server.extensions.IExtensionContext;
 import com.generalbytes.batm.server.extensions.IWallet;
 import org.slf4j.Logger;
@@ -35,7 +34,7 @@ public class LCBitGoExtension extends AbstractExtension {
 
     @Override
     public String getName() {
-        return "Localcoin Fireblocks Extension";
+        return "Localcoin BitGo Extension";
     }
 
     @Override
@@ -45,13 +44,9 @@ public class LCBitGoExtension extends AbstractExtension {
                 StringTokenizer st = new StringTokenizer(walletLogin,":");
                 String walletType = st.nextToken();
                 if (BITGO_WALLET.equalsIgnoreCase(walletType) || BITGO_WALLET_NO_FORWARD.equalsIgnoreCase(walletType)) {
-                    // BitGo API Specification: https://developers.bitgo.com/api/express.wallet.sendcoins
-                    //
-                    // bitgo:host:port:token:wallet_address:wallet_passphrase:num_blocks:fee_rate:max_fee_rate
+                    // bitgo:host:port:token:wallet_address:wallet_passphrase:num_blocks
                     // but host is optionally including the "http://" and port is optional,
-                    // num_blocks is an optional integer greater than 2 and it's used to calculate mining fee,
-                    // fee_rate is an optional integer defined fee rate,
-                    // max_fee_rate is an optional integer defined maximum fee rate.
+                    // num_blocks is an optional integer greater than 2 and it's used to calculate mining fee.
                     // bitgo:http://localhost:80:token:wallet_address:wallet_passphrase
                     // bitgo:http://localhost:token:wallet_address:wallet_passphrase
                     // bitgo:localhost:token:wallet_address:wallet_passphrase
@@ -86,25 +81,22 @@ public class LCBitGoExtension extends AbstractExtension {
                     host = tunnelAddress.getHostString();
                     port = tunnelAddress.getPort();
 
-                    int numBlocks = 2;
-                    if (st.hasMoreTokens()) {
-                        int number = Integer.parseInt(st.nextToken());
-                        if (number > 2) {
-                            numBlocks = number;
+                    String blocks;
+                    int num;
+                    Integer numBlocks = 2;
+                    if(st.hasMoreTokens()){
+                        blocks = st.nextToken();
+                        num = Integer.parseInt(blocks);
+                        if(num > 2) {
+                            numBlocks = num;
                         }
                     }
 
-                    Integer feeRate = st.hasMoreTokens() ? Integer.parseInt(st.nextToken()) : null;
-                    Integer maxFeeRate = st.hasMoreTokens() ? Integer.parseInt(st.nextToken()) : null;
-                    if (feeRate != null && (maxFeeRate == null || feeRate > maxFeeRate)) {
-                        maxFeeRate = feeRate;
-                    }
-
                     if (BITGO_WALLET_NO_FORWARD.equalsIgnoreCase(walletType)) {
-                        return new BitgoWalletWithUniqueAddresses(scheme, host, port, token, walletId, walletPassphrase, numBlocks, feeRate, maxFeeRate);
+                        return new BitgoWalletWithUniqueAddresses(scheme, host, port, token, walletId, walletPassphrase, numBlocks);
                     }
 
-                    return new BitgoWallet(scheme, host, port, token, walletId, walletPassphrase, numBlocks, feeRate, maxFeeRate);
+                    return new BitgoWallet(scheme, host, port, token, walletId, walletPassphrase, numBlocks);
 
                 }
             }

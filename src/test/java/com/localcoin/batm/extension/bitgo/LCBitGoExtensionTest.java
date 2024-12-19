@@ -1,7 +1,6 @@
-package com.localcoin.batm.extensions.bitgo;
+package com.localcoin.batm.extension.bitgo;
 
 import com.generalbytes.batm.server.extensions.IExtensionContext;
-import com.localcoin.batm.extension.bitgo.LCBitGoExtension;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
