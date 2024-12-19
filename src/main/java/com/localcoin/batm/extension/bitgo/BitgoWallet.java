@@ -100,8 +100,9 @@ public class BitgoWallet implements IWallet, ICanSendMany {
 
     private String getResultTxId(Map<String, Object> result) {
         Objects.requireNonNull(result, "Returned map is null");
-        if (result.get("id") instanceof String) {
-            return (String) result.get("id");
+        Map<String, Object> transfer = (Map<String, Object>) result.get("transfer");
+        if (transfer != null && transfer.get("id") instanceof String) {
+            return "bitgo_" + transfer.get("id");
         }
         log.warn("id not returned: {}", result);
         return null;
